@@ -1,6 +1,6 @@
 -->> PJJ Player Stats Grabber(entire server)
 -->> ValentinesDayAlone
--->> May 28, 2020
+-->> June 6, 2020
 -->> changes made to the singular script will be added here, so basically todo there is todo here
 -->> ROBLOX has a stroke if you use custom functions, shouldn't be a suprise though
 local exploitWrite = false; if writefile then exploitWrite = true end; -- writefile check, added before actual script just because
@@ -57,7 +57,7 @@ for i, v in pairs(game.Players:GetPlayers()) do
             ["KingCrimson"] = "Allows your stand to Time-Erase. Will not allow you to move during a time stop, however.",
             ["TheEmperor"] = "Makes any projectiles into weak homing projectiles. (Damage is reduced by 1.5x.",
             ["SpeedKing"] = "Damage dealt will have a chance to ignite the enemy, dealing flame damage over time. You must be close range to activate the ability.",
-            ["MadeinHeaven"] = "Grants the stand user the ability to Universe Reset plus its Over Heaven melee type.",
+            ["MadeInHeaven"] = "Grants the stand user the ability to Universe Reset plus its Over Heaven melee type, alongside a heavy speed boost.",
             ["StarPlatinum"] = "Turns basic melee into Strong melee, 1.5x melee damage plus giving Bearing Shot. This Passives applies to all melee types, EXCLUDING Over-Heavens.",
             ["SpiceGirl"] = "Chance to bounce the enemy away from you upon damage, as well as granting the ability to use Soft Bounce.",
             ["StickyFingers"] = "Grants the head-removing Head Detachment ability. Has a cooldown of 7.5 seconds.",
@@ -96,7 +96,8 @@ for i, v in pairs(game.Players:GetPlayers()) do
             ["AtomHeartFather"] = "Grants the ability to use photo flight.",
             ["Osiris"] = "Grants the Soul Chip move. Reduces your Overall Base Damage.",
             ["PurpleHaze"] = "Basic melee has a chance of becoming Bulb Punch plus grants the Bulb Cannon.",
-            ["D4C"] = "Gives the ability to use Dimensional Flag. It cannot bypass time stops nor time accelerations while in Dimension. The user can't stand jump while using this move either. The fusion ability's cooldown is currently 10 seconds per use."
+            ["D4C"] = "Gives the ability to use Dimensional Flag. It cannot bypass time stops nor time accelerations while in Dimension. The user can't stand jump while using this move either. The fusion ability's cooldown is currently 10 seconds per use.",
+            ["The Grateful Dead"] = "Grants Aging Aura, a new passive that will whittle anyone in its radius' defense and speed. This will also give you the give Ice sub-ability."
         }
         local pltrait = game.Players[plr2].Trait.Value
         local plendurance = game.Players[plr2].Endurance.Value

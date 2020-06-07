@@ -4,8 +4,8 @@ local PLAYER = "" -- can be a nick name
 
 -->> PJJ Player Stats Grabber(singular)
 -->> ValentinesDayAlone
--->> May 26, 2020
--->> fixed synapse detection, wont bother with folder
+-->> June 6, 2020
+-->> updated fusions, new stands and shit yyayayayayyayayay
 -->> ROBLOX has a stroke if you use custom functions, shouldn't be a suprise though
 local exploitWrite = false; if writefile then exploitWrite = true end; -- writefile check, added before actual script just because
 print(exploitWrite) -- debug 
@@ -106,7 +106,7 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["SpeedKing"] = "Damage dealt will have a chance to ignite the enemy, dealing flame damage over time. You must be close range to activate the ability.",
 
-    ["MadeinHeaven"] = "Grants the stand user the ability to Universe Reset plus its Over Heaven melee type.",
+    ["MadeInHeaven"] = "Grants the stand user the ability to Universe Reset plus its Over Heaven melee type, alongside a heavy speed boost.",
 
     ["StarPlatinum"] = "Turns basic melee into Strong melee, 1.5x melee damage plus giving Bearing Shot. This Passives applies to all melee types, EXCLUDING Over-Heavens.",
 
@@ -186,6 +186,7 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["D4C"] = "Gives the ability to use Dimensional Flag. It cannot bypass time stops nor time accelerations while in Dimension. The user can't stand jump while using this move either. The fusion ability's cooldown is currently 10 seconds per use.",
 
+    ["The Grateful Dead"] = "Grants Aging Aura, a new passive that will whittle anyone in its radius' defense and speed. This will also give you the give Ice sub-ability."
 }
 
 local plr2 = GetPlayerFromString(PLAYER)
