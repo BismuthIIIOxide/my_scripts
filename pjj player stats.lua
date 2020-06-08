@@ -84,7 +84,7 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["MagiciansRed"] = "Your projectiles become engulfed in flames, dealing damage dependent on the projectile's damage.",
 
-    ["Heaven'sDoor"] = "Gives Open Book move to your stand.",
+    ["HeavensDoor"] = "Gives Open Book move to your stand.",
 
     ["Aerosmith"] = "Allows your stand to use Machine Gun.",
 
@@ -186,7 +186,7 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["D4C"] = "Gives the ability to use Dimensional Flag. It cannot bypass time stops nor time accelerations while in Dimension. The user can't stand jump while using this move either. The fusion ability's cooldown is currently 10 seconds per use.",
 
-    ["The Grateful Dead"] = "Grants Aging Aura, a new passive that will whittle anyone in its radius' defense and speed. This will also give you the give Ice sub-ability."
+    ["TheGratefulDead"] = "Grants Aging Aura, a new passive that will whittle anyone in its radius' defense and speed. This will also give you the give Ice sub-ability."
 }
 
 local plr2 = GetPlayerFromString(PLAYER)
