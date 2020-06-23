@@ -20,8 +20,8 @@ end
 --> begin script <--
 for i, v in pairs(game.Players:GetPlayers()) do
     if v ~= game.Players.LocalPlayer then
-        local plr2 = v
-        plr2 = plr2.Name
+        local PLAYER = v
+        PLAYER = PLAYER.Name
         local blessings = {
             -- all the blessings
             ["Holy"] = "All cooldowns are halved.",

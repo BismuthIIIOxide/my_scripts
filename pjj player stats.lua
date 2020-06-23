@@ -84,7 +84,7 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["MagiciansRed"] = "Your projectiles become engulfed in flames, dealing damage dependent on the projectile's damage.",
 
-    ["Heaven'sDoor"] = "Gives Open Book move to your stand.",
+    ["HeavensDoor"] = "Gives Open Book move to your stand.",
 
     ["Aerosmith"] = "Allows your stand to use Machine Gun.",
 
