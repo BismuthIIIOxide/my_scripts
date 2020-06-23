@@ -1,11 +1,22 @@
 -->> PJJ Player Stats Grabber(entire server)
 -->> ValentinesDayAlone
--->> June 6, 2020
+-->> June 23, 2020
 -->> changes made to the singular script will be added here, so basically todo there is todo here
 -->> ROBLOX has a stroke if you use custom functions, shouldn't be a suprise though
-local exploitWrite = false; if writefile then exploitWrite = true end; -- writefile check, added before actual script just because
+local exploitWrite = false
+if writefile then
+    exploitWrite = true
+end -- writefile check, added before actual script just because
 print(exploitWrite) -- debug
-
+local function GetPlayerFromString(s)
+    s = s:lower() -- Remove this if you want case sensitivity
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if s == player.Name:lower():sub(1, #s) then
+            return player
+        end
+    end
+    return nil
+end
 --> begin script <--
 for i, v in pairs(game.Players:GetPlayers()) do
     if v ~= game.Players.LocalPlayer then
@@ -26,8 +37,9 @@ for i, v in pairs(game.Players:GetPlayers()) do
             ["Transcendent"] = "Grants immunity to all knockback/stun (similar to GER's passive), plus additional immunity to White Album's freeze. Effects like Harvest's Drunkenness does not count as a Stun, it is a Status Effect.",
             ["Almighty"] = "Repel all nearby targets while constantly damaging them while posing. (Random chance of activating) In addition, this will double your on-damage proc rate. (Example: twice as likely for a WS sub to proc)",
             ["Exalted"] = "Block nearly all damage from opponents while posing. (Has a chance to be bypassed) [Random chance of activating] In addition, this will double your on-damage proc rate. (Example: twice as likely for a WS sub to proc)",
-            ["None"] = "" -- ignore this, its for what it is dumbass
+            ["None"] = "" -- although i could just check for this in a "normal" way, i dont give a shit because im a dumbass
         }
+
         local fusions = {
             -- fusions, of course PJJ sucks and some of them probably dont wont (like GE/GER and all the AU ones). I also dont know why the it's not in the order it was in, but whatever.
             ["TheWorld"] = "Allows your designated stand the ability to use Time-Stop. Cooldown is 2 minutes.",
@@ -43,10 +55,10 @@ for i, v in pairs(game.Players:GetPlayers()) do
             ["Mr.President"] = "Passive doubled defense.",
             ["StarPlatinumPrime"] = "Turns basic melee into Strong melee, 1.5x melee damage plus giving Super Ora punch. This Passives applies to all melee types, EXCLUDING Over-Heavens.",
             ["Anubis"] = "Allows the stand user to use Anubis' deflect move.",
-            ["Star-SpangledBanner"] = "Gives all Rush Attacks an infinite duration. (Excludes Homing Barrages) Gives the fusion move SSB's F move. This gives certain non-humanoid stand barrages like Emperor's E infinite duration.",
+            ["StarSpangledBanner"] = "Gives all Rush Attacks an infinite duration. (Excludes Homing Barrages) Gives the fusion move SSB's F move. This gives certain non-humanoid stand barrages like Emperor's E infinite duration.",
             ["Kiss"] = "Most projectiles are duplicated 3x and offset plus granting Self-Arm duplication. Projectiles only have a chance to become tripled. - SoD's Missiles, Harvest projectiles, Echoes Act 2 projectiles, The Sun's beam, Metallica's scalpels, BNR's smoke bombs, and KQAU's mines will not be duplicated with Kiss as a subfusion..",
             ["MagiciansRed"] = "Your projectiles become engulfed in flames, dealing damage dependent on the projectile's damage.",
-            ["HeavensDoor"] = "Gives Open Book move to your stand.",
+            ["Heaven'sDoor"] = "Gives Open Book move to your stand.",
             ["Aerosmith"] = "Allows your stand to use Machine Gun.",
             ["MoodyBlues"] = "Let's you use the 'Replay!' ability Moody Blues' T move.",
             ["WhiteWedding"] = "Grants the ability of Ionic Bond.",
@@ -80,7 +92,7 @@ for i, v in pairs(game.Players:GetPlayers()) do
             ["BallBreaker"] = "Grants Infinite Rotation, making all damage AOE transfer. 1/4 chance to cause Infinite Rotation. Also grant's the Infinite Rotation Blast move.",
             ["Soft&Wet"] = "Damage done to a nearby enemy has a chance of stealing their balance. Changes most melee to bubble melee, and giving you the Bubble Prison fusion ability.",
             ["HighwayStar"] = "All attacks give Life Steal. This Life Steal can be combined with vampire to buff life steal damage. 1/4 chance to Life Steal 100% of the damage you gave them.",
-            ["BokunoRhythmwoKiitekure"] = "Grants Sticky-Bomb Toss.",
+            ["BokunoRhythmwoKiitekure"] = "Grants Sticky-Bomb Toss. Close-ranged attacks have the chance to put a bomb on them, albeit a very low chance.",
             ["ScaryMonsters"] = "Allows a chance to spawn a dino minion upon damage. Has an approximately 1/15 chance of activating. (User has to be within close range.)",
             ["DiverDown"] = "All damage dealt becomes Stored Energy within the target, and releases on a delay similar to its barrage. Delayed damage dealt is 50% Extra.",
             ["GoldExperience/Requiem"] = "Turns basic punches into GER punches, grants Return to Zero and the ability to see any D4C in dimension and such. This fusion relies on power. (Requires requiem to use RTZ.",
@@ -91,14 +103,20 @@ for i, v in pairs(game.Players:GetPlayers()) do
             ["Tusk"] = 'Damage done that is 30% or more of the target\'s max hp applies the infinite spin debuff to them. (This will NOT increase their damage.) Gives the ability to use "Fingernail Shotgun". Turns Basic punches into Tusk punches, scaling off of Power.',
             ["C-Moon"] = "Gives Gravity Manipulation and Basic Melee turn into Inversion Melee. It only delays melee damage. - Only affects Basic Stand Punches. Will not affect Barrages or any other sort of Melee Attacks.",
             ["HierophantGreen"] = "Damage dealt to others has a chance to proc a Tentacle Stun. Adds the ability to use Emerald Splash as your U Utility.",
-            ["SexPistols"] = "Projectiles are guaranteed to auto aim (projectiles don't become homing, they're aimed towards the nearest target).",
+            ["SexPistols"] = "Projectiles are guaranteed to auto aim (projectiles don't become homing, they're aimed towards the nearest target). Also buffs projectiles by 35%.",
             ["RollingStones"] = "Damage dealt to targets with 25% or less health instantly kills the target.",
             ["AtomHeartFather"] = "Grants the ability to use photo flight.",
             ["Osiris"] = "Grants the Soul Chip move. Reduces your Overall Base Damage.",
             ["PurpleHaze"] = "Basic melee has a chance of becoming Bulb Punch plus grants the Bulb Cannon.",
             ["D4C"] = "Gives the ability to use Dimensional Flag. It cannot bypass time stops nor time accelerations while in Dimension. The user can't stand jump while using this move either. The fusion ability's cooldown is currently 10 seconds per use.",
-            ["The Grateful Dead"] = "Grants Aging Aura, a new passive that will whittle anyone in its radius' defense and speed. This will also give you the give Ice sub-ability."
+            ["TheGratefulDead"] = "Grants Aging Aura, a new passive that will whittle anyone in its radius' defense and speed. This will also give you the give Ice sub-ability.",
+            ["BoyIIMan"] = "Grants the ability to steal a stand's E move.",
+            ["ChocolateDisco"] = "Grants Projectile Dislocation."
         }
+
+        local plr2 = GetPlayerFromString(PLAYER)
+        plr2 = plr2.Name
+
         local pltrait = game.Players[plr2].Trait.Value
         local plendurance = game.Players[plr2].Endurance.Value
         local pllvl = game.Players[plr2].Level.Value
@@ -116,27 +134,33 @@ for i, v in pairs(game.Players:GetPlayers()) do
         local plvampire = game.Players[plr2].IsVampire.Value
         local plrock = game.Players[plr2].IsRock.Value
         local plspin = game.Players[plr2].IsSpin.Value
+        local plstolen1 = game.Players[plr2].stolenability1.Value
+        local plstolen2 = game.Players[plr2].stolenability2.Value
+        local plstolen3 = game.Players[plr2].stolenability3.Value
+        local plstolen4 = game.Players[plr2].stolenability4.Value
         local caps = string.upper(plr2)
         local funnystring = ""
         local blessing = ""
         local fusion = ""
 
-        if plfusion ~= "None" then
+        if plfusion ~= "None" then -- checks if fusion exists
             funnystring = plstand .. " + " .. plfusion .. caps
         else
             funnystring = plstand .. caps
         end
 
-        for i, v in pairs(blessings) do -- get current blessing
-            if string.find(plblessing, i) then
-                if plblessing ~= "None" then
-                    blessing = plblessing .. " -- " .. v -- fuck you trello caretakers, it takes too long
-                else
+        for i, v in pairs(blessings) do
+            if string.find(plblessing, i) then -- find the blessing the user has
+                print(plblessing) -- for debugging
+                if plblessing == "None" then
                     blessing = plblessing
+                else
+                    blessing = plblessing .. " -- " .. v -- adds what the blessing does, because opening the trello is dumb and takes too long. fuck you
                 end
             end
         end
-
+        warn(plfusion)
+         -- for debugging
         for i, v in pairs(fusions) do
             --warn(i, v) --this is dumb so ignore it
             if string.find(plfusion, i) then -- find the fusion the user has
@@ -144,55 +168,92 @@ for i, v in pairs(game.Players:GetPlayers()) do
                 if plfusion == "None" then
                     fusion = plfusion
                 else
-                    fusion = plfusion.. ' -- '.. v -- adds what the fusion does, because opening the trello is dumb and takes even longer than blessings. fuck you whoever takes care of the trello
+                    fusion = plfusion .. " -- " .. v -- adds what the fusion does, because opening the trello is dumb and takes even longer than blessings. i FUCKING HATE YOU TRELLO MANAGERS
                 end
             end
         end
 
-        writefile((funnystring) .. ".txt", "--------------------------------------------------\n\n")
         local stuffSTRING = ""
-        local stuff = {
-            "USER: " .. plr2 .. "\n",
-            "--------------------------------------------------\n",
-            "STAND: " .. plstand,
-            "FUSION: " .. fusion,
-            "TRAIT: " .. pltrait,
-            "BLESSING: " .. blessing .. "\n",
-            "--------------------------------------------------\n",
-            "ENDURANCE: " .. plendurance,
-            "POWER: " .. plpower,
-            "SPECIAL: " .. plspecial,
-            "STAND LEVEL: " .. plstandlvl,
-            "LEVEL: " .. pllvl .. "\n",
-            "--------------------------------------------------\n",
-            "REQ: " .. tostring(plreq),
-            "ULF: " .. tostring(plulf),
-            "HAMON: " .. tostring(plhamon),
-            "VAMP:" .. tostring(plvampire),
-            "ROCK: " .. tostring(plrock),
-            "SPIN: " .. tostring(plspin)
-        }
+        local stuff
+        if plstand == "BoyIIMan" then
+            stuff = {
+                -- write whats needed for the file
+                "USER: " .. plr2 .. "\n",
+                "-------------------------------------------------- \n",
+                "STAND: " .. plstand,
+                "FUSION: " .. fusion,
+                "TRAIT: " .. pltrait,
+                "BLESSING: " .. blessing .. "\n",
+                "----------------------------------------------------\n",
+                "ENDURANCE: " .. plendurance,
+                "POWER: " .. plpower,
+                "SPECIAL: " .. plspecial,
+                "STAND LEVEL: " .. plstandlvl,
+                "LEVEL: " .. pllvl .. "\n",
+                "----------------------------------------------------\n",
+                "REQ: " .. tostring(plreq),
+                "ULF: " .. tostring(plulf),
+                "HAMON: " .. tostring(plhamon),
+                "VAMP:" .. tostring(plvampire),
+                "ROCK: " .. tostring(plrock),
+                "SPIN: " .. tostring(plspin) .. "\n",
+                "----------------------------------------------------\n",
+                "ABILITY 1: " .. plstolen1,
+                "ABILITY 2: " .. plstolen2,
+                "ABILITY 3: " .. plstolen3,
+                "ABILITY 4: " .. plstolen4
+            }
+        else
+            stuff = {
+                -- write whats needed for the file
+                "USER: " .. plr2 .. "\n",
+                "-------------------------------------------------- \n",
+                "STAND: " .. plstand,
+                "FUSION: " .. fusion,
+                "TRAIT: " .. pltrait,
+                "BLESSING: " .. blessing .. "\n",
+                "----------------------------------------------------\n",
+                "ENDURANCE: " .. plendurance,
+                "POWER: " .. plpower,
+                "SPECIAL: " .. plspecial,
+                "STAND LEVEL: " .. plstandlvl,
+                "LEVEL: " .. pllvl .. "\n",
+                "----------------------------------------------------\n",
+                "REQ: " .. tostring(plreq),
+                "ULF: " .. tostring(plulf),
+                "HAMON: " .. tostring(plhamon),
+                "VAMP:" .. tostring(plvampire),
+                "ROCK: " .. tostring(plrock),
+                "SPIN: " .. tostring(plspin)
+            }
+        end
         if plstand ~= "None" then
             print("--------------------------------------------------\n")
             for i, v in pairs(stuff) do
-                stuffSTRING = stuffSTRING.. stuff[i]..'\n'
+                stuffSTRING = stuffSTRING .. stuff[i] .. "\n"
             end
             wait()
             if exploitWrite then
                 if syn then --fuck you thats why
-                    if isfolder("PJJStands") then
-                        writefile('\\PJJStands\\'..(funnystring)..".txt", "----------------------------------------------------\n\n")
+                    if isfolder("PJJStandDumper") then
+                        writefile(
+                            "\\PJJStandDumper\\" .. (funnystring) .. ".txt",
+                            "----------------------------------------------------\n\n"
+                        )
                     else
                         print(false)
-                        makefolder("PJJStands")
+                        makefolder("PJJStandDumper")
                         wait(.5)
-                        writefile('\\PJJStands\\'..(funnystring)..".txt", "----------------------------------------------------\n\n")
+                        writefile(
+                            "\\PJJStandDumper\\" .. (funnystring) .. ".txt",
+                            "----------------------------------------------------\n\n"
+                        )
                     end
-                    writefile('\\PJJStands\\'..(funnystring)..".txt", stuffSTRING)
+                    writefile("\\PJJStandDumper\\" .. (funnystring) .. ".txt", stuffSTRING)
                 else
-                    writefile(funnystring..".txt", "----------------------------------------------------\n\n")
+                    writefile(funnystring .. ".txt", "----------------------------------------------------\n\n")
                     wait()
-                    writefile((funnystring)..".txt", stuffSTRING)
+                    writefile((funnystring) .. ".txt", stuffSTRING)
                 end
                 print(stuffSTRING)
             else

@@ -4,7 +4,7 @@ local PLAYER = "" -- can be a nick name
 
 -->> PJJ Player Stats Grabber(singular)
 -->> ValentinesDayAlone
--->> June 6, 2020
+-->> June 23, 2020
 -->> updated fusions, new stands and shit yyayayayayyayayay
 -->> ROBLOX has a stroke if you use custom functions, shouldn't be a suprise though
 local exploitWrite = false; if writefile then exploitWrite = true end; -- writefile check, added before actual script just because
@@ -152,7 +152,7 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["HighwayStar"] = "All attacks give Life Steal. This Life Steal can be combined with vampire to buff life steal damage. 1/4 chance to Life Steal 100% of the damage you gave them.",
 
-    ["BokunoRhythmwoKiitekure"] = "Grants Sticky-Bomb Toss.",
+    ["BokunoRhythmwoKiitekure"] = "Grants Sticky-Bomb Toss. Close-ranged attacks have the chance to put a bomb on them, albeit a very low chance.",
 
     ["ScaryMonsters"] = "Allows a chance to spawn a dino minion upon damage. Has an approximately 1/15 chance of activating. (User has to be within close range.)",
 
@@ -174,7 +174,7 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["HierophantGreen"] = "Damage dealt to others has a chance to proc a Tentacle Stun. Adds the ability to use Emerald Splash as your U Utility.",
 
-    ["SexPistols"] = "Projectiles are guaranteed to auto aim (projectiles don't become homing, they're aimed towards the nearest target).",
+    ["SexPistols"] = "Projectiles are guaranteed to auto aim (projectiles don't become homing, they're aimed towards the nearest target). Also buffs projectiles by 35%.",
 
     ["RollingStones"] = "Damage dealt to targets with 25% or less health instantly kills the target.",
 
@@ -186,7 +186,11 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["D4C"] = "Gives the ability to use Dimensional Flag. It cannot bypass time stops nor time accelerations while in Dimension. The user can't stand jump while using this move either. The fusion ability's cooldown is currently 10 seconds per use.",
 
-    ["The Grateful Dead"] = "Grants Aging Aura, a new passive that will whittle anyone in its radius' defense and speed. This will also give you the give Ice sub-ability."
+    ["TheGratefulDead"] = "Grants Aging Aura, a new passive that will whittle anyone in its radius' defense and speed. This will also give you the give Ice sub-ability.",
+    
+    ["BoyIIMan"] = "Grants the ability to steal a stand's E move.",
+
+    ["ChocolateDisco"] = "Grants Projectile Dislocation."
 }
 
 local plr2 = GetPlayerFromString(PLAYER)
@@ -209,6 +213,10 @@ local plhamon = game.Players[plr2].IsHamon.Value
 local plvampire = game.Players[plr2].IsVampire.Value
 local plrock = game.Players[plr2].IsRock.Value
 local plspin = game.Players[plr2].IsSpin.Value
+local plstolen1 = game.Players[plr2].stolenability1.Value
+local plstolen2 = game.Players[plr2].stolenability2.Value
+local plstolen3 = game.Players[plr2].stolenability3.Value
+local plstolen4 = game.Players[plr2].stolenability4.Value
 local caps = string.upper(plr2)
 local funnystring = ""
 local blessing = ""
@@ -245,27 +253,57 @@ end
 
 
 local stuffSTRING = ""
-local stuff = { -- write whats needed for the file
-    "USER: "..plr2..'\n';
-    "-------------------------------------------------- \n";
-    "STAND: ".. plstand;
-    "FUSION: ".. fusion;
-    "TRAIT: ".. pltrait;
-    "BLESSING: ".. blessing .. "\n";
-    "----------------------------------------------------\n";
-    "ENDURANCE: ".. plendurance;
-    "POWER: ".. plpower;
-    "SPECIAL: ".. plspecial;
-    "STAND LEVEL: " .. plstandlvl;
-    "LEVEL: " .. pllvl .. '\n';
-    "----------------------------------------------------\n";
-    "REQ: ".. tostring(plreq);
-    "ULF: ".. tostring(plulf);
-    "HAMON: ".. tostring(plhamon);
-    "VAMP:".. tostring(plvampire);
-    "ROCK: ".. tostring(plrock);
-    "SPIN: ".. tostring(plspin);    
+local stuff
+if plstand == "BoyIIMan" then
+    stuff = { -- the B2M version, includes the stolen abilities
+        "USER: "..plr2..'\n';
+        "-------------------------------------------------- \n";
+        "STAND: ".. plstand;
+        "FUSION: ".. fusion;
+        "TRAIT: ".. pltrait;
+        "BLESSING: ".. blessing .. "\n";
+        "----------------------------------------------------\n";
+        "ENDURANCE: ".. plendurance;
+        "POWER: ".. plpower;
+        "SPECIAL: ".. plspecial;
+        "STAND LEVEL: " .. plstandlvl;
+        "LEVEL: " .. pllvl .. '\n';
+        "----------------------------------------------------\n";
+        "REQ: ".. tostring(plreq);
+        "ULF: ".. tostring(plulf);
+        "HAMON: ".. tostring(plhamon);
+        "VAMP:".. tostring(plvampire);
+        "ROCK: ".. tostring(plrock);
+        "SPIN: ".. tostring(plspin) .. '\n';   
+        "----------------------------------------------------\n";
+        "ABILITY 1: ".. plstolen1;
+        "ABILITY 2: ".. plstolen2;
+        "ABILITY 3: ".. plstolen3;
+        "ABILITY 4: ".. plstolen4; 
 }
+else
+    stuff = { -- write whats needed for the file
+        "USER: "..plr2..'\n';
+        "-------------------------------------------------- \n";
+        "STAND: ".. plstand;
+        "FUSION: ".. fusion;
+        "TRAIT: ".. pltrait;
+        "BLESSING: ".. blessing .. "\n";
+        "----------------------------------------------------\n";
+        "ENDURANCE: ".. plendurance;
+        "POWER: ".. plpower;
+        "SPECIAL: ".. plspecial;
+        "STAND LEVEL: " .. plstandlvl;
+        "LEVEL: " .. pllvl .. '\n';
+        "----------------------------------------------------\n";
+        "REQ: ".. tostring(plreq);
+        "ULF: ".. tostring(plulf);
+        "HAMON: ".. tostring(plhamon);
+        "VAMP:".. tostring(plvampire);
+        "ROCK: ".. tostring(plrock);
+        "SPIN: ".. tostring(plspin);    
+    }
+end
 print("----------------------------------------------------\n")-- for console
 
 for i, v in pairs(stuff) do
