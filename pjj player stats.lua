@@ -251,10 +251,12 @@ for i, v in pairs(fusions) do
     end
 end
 
-
 local stuffSTRING = ""
 local stuff
-if plstand == "BoyIIMan" then
+if plstand == "BoyIIMan" then 
+    if string.find(plstolen4, "REQ") ~= nil then
+        plstolen4 = string.gsub(plstolen4, "REQ", "")
+    end
     stuff = { -- the B2M version, includes the stolen abilities
         "USER: "..plr2..'\n';
         "-------------------------------------------------- \n";

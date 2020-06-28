@@ -176,6 +176,9 @@ for i, v in pairs(game.Players:GetPlayers()) do
         local stuffSTRING = ""
         local stuff
         if plstand == "BoyIIMan" then
+            if string.find(plstolen4, "REQ") ~= nil then
+                plstolen4 = string.gsub(plstolen4, "REQ", "")
+            end
             stuff = {
                 -- write whats needed for the file
                 "USER: " .. plr2 .. "\n",
