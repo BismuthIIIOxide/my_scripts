@@ -55,7 +55,7 @@ for i, v in pairs(game.Players:GetPlayers()) do
             ["Mr.President"] = "Passive doubled defense.",
             ["StarPlatinumPrime"] = "Turns basic melee into Strong melee, 1.5x melee damage plus giving Super Ora punch. This Passives applies to all melee types, EXCLUDING Over-Heavens.",
             ["Anubis"] = "Allows the stand user to use Anubis' deflect move.",
-            ["StarSpangledBanner"] = "Gives all Rush Attacks an infinite duration. (Excludes Homing Barrages) Gives the fusion move SSB's F move. This gives certain non-humanoid stand barrages like Emperor's E infinite duration.",
+            ["Star-SpangledBanner"] = "Gives all Rush Attacks an infinite duration. (Excludes Homing Barrages) Gives the fusion move SSB's F move. This gives certain non-humanoid stand barrages like Emperor's E infinite duration.",
             ["Kiss"] = "Most projectiles are duplicated 3x and offset plus granting Self-Arm duplication. Projectiles only have a chance to become tripled. - SoD's Missiles, Harvest projectiles, Echoes Act 2 projectiles, The Sun's beam, Metallica's scalpels, BNR's smoke bombs, and KQAU's mines will not be duplicated with Kiss as a subfusion..",
             ["MagiciansRed"] = "Your projectiles become engulfed in flames, dealing damage dependent on the projectile's damage.",
             ["Heaven'sDoor"] = "Gives Open Book move to your stand.",
@@ -195,11 +195,11 @@ for i, v in pairs(game.Players:GetPlayers()) do
                 "LEVEL: " .. pllvl .. "\n",
                 "----------------------------------------------------\n",
                 "REQ: " .. tostring(plreq),
-                "ULF: " .. tostring(plulf),
+                "SPIN: " .. tostring(plspin),
                 "HAMON: " .. tostring(plhamon),
                 "VAMP:" .. tostring(plvampire),
-                "ROCK: " .. tostring(plrock),
-                "SPIN: " .. tostring(plspin) .. "\n",
+                "ULF: " .. tostring(plulf),
+                "ROCK: " .. tostring(plrock) .. '\n',
                 "----------------------------------------------------\n",
                 "ABILITY 1: " .. plstolen1,
                 "ABILITY 2: " .. plstolen2,
@@ -223,11 +223,12 @@ for i, v in pairs(game.Players:GetPlayers()) do
                 "LEVEL: " .. pllvl .. "\n",
                 "----------------------------------------------------\n",
                 "REQ: " .. tostring(plreq),
-                "ULF: " .. tostring(plulf),
+                "SPIN: " .. tostring(plspin),
                 "HAMON: " .. tostring(plhamon),
                 "VAMP:" .. tostring(plvampire),
+                "ULF: " .. tostring(plulf),
                 "ROCK: " .. tostring(plrock),
-                "SPIN: " .. tostring(plspin)
+                
             }
         end
         if plstand ~= "None" then

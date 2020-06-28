@@ -78,7 +78,7 @@ local fusions = {-- fusions, of course PJJ sucks and some of them probably dont 
 
     ["Anubis"] = "Allows the stand user to use Anubis' deflect move.",
 
-    ["StarSpangledBanner"] = "Gives all Rush Attacks an infinite duration. (Excludes Homing Barrages) Gives the fusion move SSB's F move. This gives certain non-humanoid stand barrages like Emperor's E infinite duration.",
+    ["Star-SpangledBanner"] = "Gives all Rush Attacks an infinite duration. (Excludes Homing Barrages) Gives the fusion move SSB's F move. This gives certain non-humanoid stand barrages like Emperor's E infinite duration.",
 
     ["Kiss"] = "Most projectiles are duplicated 3x and offset plus granting Self-Arm duplication. Projectiles only have a chance to become tripled. - SoD's Missiles, Harvest projectiles, Echoes Act 2 projectiles, The Sun's beam, Metallica's scalpels, BNR's smoke bombs, and KQAU's mines will not be duplicated with Kiss as a subfusion..",
 
@@ -271,12 +271,12 @@ if plstand == "BoyIIMan" then
         "STAND LEVEL: " .. plstandlvl;
         "LEVEL: " .. pllvl .. '\n';
         "----------------------------------------------------\n";
-        "REQ: ".. tostring(plreq);
-        "ULF: ".. tostring(plulf);
-        "HAMON: ".. tostring(plhamon);
-        "VAMP:".. tostring(plvampire);
-        "ROCK: ".. tostring(plrock);
-        "SPIN: ".. tostring(plspin) .. '\n';   
+        "REQ: " .. tostring(plreq),
+        "SPIN: " .. tostring(plspin),
+        "HAMON: " .. tostring(plhamon),
+        "VAMP:" .. tostring(plvampire),
+        "ULF: " .. tostring(plulf),
+        "ROCK: " .. tostring(plrock),
         "----------------------------------------------------\n";
         "ABILITY 1: ".. plstolen1;
         "ABILITY 2: ".. plstolen2;
@@ -298,12 +298,12 @@ else
         "STAND LEVEL: " .. plstandlvl;
         "LEVEL: " .. pllvl .. '\n';
         "----------------------------------------------------\n";
-        "REQ: ".. tostring(plreq);
-        "ULF: ".. tostring(plulf);
-        "HAMON: ".. tostring(plhamon);
-        "VAMP:".. tostring(plvampire);
-        "ROCK: ".. tostring(plrock);
-        "SPIN: ".. tostring(plspin);    
+        "REQ: " .. tostring(plreq),
+        "SPIN: " .. tostring(plspin),
+        "HAMON: " .. tostring(plhamon),
+        "VAMP:" .. tostring(plvampire),
+        "ULF: " .. tostring(plulf),
+        "ROCK: " .. tostring(plrock),
     }
 end
 print("----------------------------------------------------\n")-- for console
