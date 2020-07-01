@@ -8,7 +8,7 @@ local PLAYER = "" -- can be a nick name
 -->> updated fusions, new stands and shit yyayayayayyayayay
 -->> ROBLOX has a stroke if you use custom functions, shouldn't be a suprise though
 local exploitWrite = false; if writefile then exploitWrite = true end; -- writefile check, added before actual script just because
-print(exploitWrite) -- debug 
+--print(exploitWrite) -- debug 
 
 -- > begin script
 local function GetPlayerFromString(s)
