@@ -1,12 +1,16 @@
 local wiki = {}
 local ygo = {}
+local food = {}
 local HS = game:GetService("HttpService")
 local function get(URL)  return HS:JSONDecode(game:HttpGet(URL))  end
 
 --[[
 
     WIKIPEDIA
-
+    `` 
+        dont remember where i got the wikipedia api
+        but you could pretty much find the same thing in wikiPY
+    ``
 ]]
 function wiki:random()
     local req = get("https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=1&format=json")
@@ -37,6 +41,11 @@ end
 --[[
 
     YU-GI-OH
+    ``
+        thank you ygoprodeck
+        find the website here:
+            https://db.ygoprodeck.com/api-guide/
+    ``
 
 ]]
 function ygo:random() -- random card
@@ -59,6 +68,27 @@ function ygo:card(NAME) -- only returns the FIRST result of what you typed in, f
     DATA["desc"] = req['data'][1]["desc"]
     return DATA
 end
+--[[
+
+FOOD
+``
+    thanks TheMealDB
+    find them here:
+        https://www.themealdb.com/
+``
+
+]]
+function food:random() 
+    local DATA = {}
+    local req = get('https://www.themealdb.com/api/json/v1/1/random.php')
+    local t = req['meals'][1]
+
+    DATA["name"] = t['strMeal']
+    DATA["instructions"] = t['strInstructions']
+    return DATA
+end --that was fast
+
+
 
 --[[
 
@@ -67,3 +97,4 @@ FINALIZE
 ]]
 getgenv()["wiki"] = wiki
 getgenv()["ygo"] = ygo
+getgenv()["food"] = food
