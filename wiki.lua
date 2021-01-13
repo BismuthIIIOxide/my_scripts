@@ -1,6 +1,4 @@
-local wiki = {}
-local ygo = {}
-local food = {}
+local wiki,ygo,food,song = {},{},{},{} -- this is so shit
 local HS = game:GetService("HttpService")
 local function get(URL)  return HS:JSONDecode(game:HttpGet(URL))  end
 
@@ -88,6 +86,19 @@ function food:random()
     return DATA
 end --that was fast
 
+--[[ 
+
+SONG
+
+]]
+function song(NUM) -- i HATE YOU
+	local random = Random.new()
+	local id = NUM or math.floor(random:NextNumber(100000,1000000)); tostring(id);
+	local url = "https://api.genius.com/songs/"..id.."?access_token="..auth_token
+	local success, err = pcall(function() get(url) end)
+
+    return get(url) 
+end
 
 
 --[[
@@ -98,3 +109,4 @@ FINALIZE
 getgenv()["wiki"] = wiki
 getgenv()["ygo"] = ygo
 getgenv()["food"] = food
+getgenv()["song"] = song
