@@ -91,9 +91,9 @@ end --that was fast
 SONG
 
 ]]
-function song:random(NUM) -- i HATE YOU
+function song:random() -- i HATE YOU
 	local random = Random.new()
-	local id = NUM or math.floor(random:NextNumber(100000,1000000)); tostring(id);
+	local id = math.floor(random:NextNumber(100000,1000000)); tostring(id);
 	local url = "https://api.genius.com/songs/"..id.."?access_token="..auth_token
 	local success, err = pcall(function() get(url) end)
 
