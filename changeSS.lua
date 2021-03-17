@@ -3,7 +3,19 @@ local change = {}
 function change:Other(STAT, VAL)
     STAT.Value = VAL
 end
-
+function change:PrintStyles()
+warn([[
+boxing
+muaythai
+karate
+judo
+sumo
+wrestling
+kungfu
+taekwondo
+woozy
+]])
+end
 -- not stats
 function change:Style(VAL)
     game.Players.LocalPlayer.pstats.style.Value = VAL
