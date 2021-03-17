@@ -8,45 +8,45 @@ end
 
 -- not stats
 function change:Style(VAL)
-    pstats.style = VAL
-    pstats.stylestate = 4
+    pstats.style.Value = VAL
+    pstats.stylestate.Value = 4
 end
 function change:Element(VAL)
-    pstats.element = VAL
+    pstats.element.Value = VAL
 end
 function change:Clan(VAL)
-    pstats.clan = VAL
+    pstats.clan.Value = VAL
 end
 function change:Armor(VAL)
-    lp.soularmor = VAL
+    lp.soularmor.Value = VAL
 end
 
 -- stats
 function change:Strength(VAL)
-    pstats.strength = VAL
+    pstats.strength.Value = VAL
 end
 function change:Endurance(VAL)
-    pstats.endurance = VAL
+    pstats.endurance.Value = VAL
 end
 function change:Agility(VAL)
-    pstats.agility = VAL
+    pstats.agility.Value = VAL
 end
 function change:Speed(VAL)
-    pstats.speed = VAL
+    pstats.speed.Value = VAL
 end
 function change:Mana(VAL)
-    pstats.mana = VAL
+    pstats.mana.Value = VAL
 end
 function change:Combatexp(VAL)
-    pstats.combatexp = VAL
+    pstats.combatexp.Value = VAL
 end
 
 -- for fun
 function change:Phrase(VAL)
-    lp.phrase = VAL
+    lp.phrase.Value = VAL
 end
 function change:Name(VAL)
-    lp.guardianname = VAL
+    lp.guardianname.Value = VAL
 end
 
 
