@@ -1,5 +1,9 @@
 local change = {}
-
+    warn([[\n
+    ==============
+        LOADED
+    ==============
+    ]])
 function change:Other(STAT, VAL)
     STAT.Value = VAL
 end
