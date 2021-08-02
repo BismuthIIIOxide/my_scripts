@@ -11,8 +11,9 @@ z::Numpad1
 x::Numpad2
 c::Numpad3
 
+ ; just in case you want Z X C
 Numpad4::z
-Numpad5::x
+Numpad5::x 
 Numpad6::c
 
 #IfWinActive
