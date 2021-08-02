@@ -1,12 +1,10 @@
--- what is a good name for this?
 if game.CoreGui:FindFirstChild "FluxBreakMain" then game.CoreGui:FindFirstChild "FluxBreakMain":Remove() end
 if not getgenv()["change"] then loadstring(game:HttpGet("https://raw.githubusercontent.com/BismuthIIIOxide/my_scripts/master/changeSS.lua"))() end
 
 local UIS = game:GetService("UserInputService")
 
 local styles = {"boxing","muaythai","karate","judo","sumo","wrestling","kungfu","taekwondo","woozy"}
--- fake binds, shitty way of doing this tbh but i dont know any other way
--- i kind of like it too
+-- fake binds, shitty way of doing this but i dont know any other way
 local Z = 0x64 -- Numpad 4
 local X = 0x65 -- Numpad 5
 local C = 0x66 -- Numpad 6
@@ -19,7 +17,8 @@ local function PressKey(KEY)
 end
 
 game:GetService("StarterGui"):SetCore("SendNotification", {Title = "yo", Text = "make sure the AHK script is open"}); for _, v in pairs(styles) do warn(v) end
----- actually start ig
+
+
 local L = loadstring(game:HttpGet("https://raw.githubusercontent.com/CreativeHell/public-scripts/master/uilib.lua"))()
 local f = L:CreateWindow({text='them fightin herds'})
 local s = L:CreateWindow({text='saves'})
