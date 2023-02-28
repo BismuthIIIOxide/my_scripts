@@ -36,29 +36,13 @@ end
 placeholderImage = syn.crypt.base64.decode(placeholderImage)
 if not isfile("bitchbot/chatspam.txt") then --idk help the user out lol, prevent stupid errors --well it would kinda ig
 	writefile(
-		"bitchbot/chatspam.txt",
-		[[
-WSUP FOOL
-GET OWNED KID
-BBOAT ON TOP
-I LOVE BBOT YEAH
-PLACEHOLDER TEXT 
-dear bbot user, edit your chat spam
-	]]
+		"bitchbot/chatspam.txt", "d"
 	)
 end
 
 if not isfile("bitchbot/killsay.txt") then
 	writefile(
-		"bitchbot/killsay.txt",
-		[[
-WSUP FOOL [name]
-GET OWNED [name]
-[name] just died to my [weapon] everybody laugh
-[name] got owned roflsauce
-PLACEHOLDER TEXT 
-dear bbot user, edit your kill say
-	]]
+		"bitchbot/killsay.txt", "d"
 	)
 end
 
