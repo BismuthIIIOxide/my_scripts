@@ -229,6 +229,7 @@ function buttplug.remove_device(dev_index)
 end
 
 function buttplug.handle_message(raw_message)
+    print(`HANDLE_MESSAGE || {raw_message}`)
     local msg = HttpService:JSONDecode(raw_message)[1]
     local msg_type = message_type(msg)
     local msg_contents = msg[msg_type]
