@@ -147,7 +147,7 @@ local function send(msg)
     buttplug.msg_counter += 1                   -- increment counter
 
     local payload = `[{HttpService:JSONEncode(msg)}]`
-    buttplug.print(`sent > {payload}`)
+    buttplug.print(`SEND > {payload}`)
     return buttplug.sock:Send(payload)
 end
 
