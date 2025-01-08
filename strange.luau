@@ -115,6 +115,7 @@ local messages = {
 local buttplug = {
     msg_counter = 1,
     devices = {},
+    sock = 0,
     print = print, -- User can override this w/ game print function
     -- Callbacks to run when receiving messages from the server
     cb = {
@@ -140,7 +141,7 @@ local function message_type(msg)
     return next(msg)
 end
 
-local function send(msg)
+local function send(msg, socket)
     local message_type = message_type(msg)
 
     msg[message_type].Id = buttplug.msg_counter -- set counter
