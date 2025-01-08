@@ -141,7 +141,7 @@ local function message_type(msg)
     return next(msg)
 end
 
-local function send(msg, socket)
+local function send(msg)
     local message_type = message_type(msg)
 
     msg[message_type].Id = buttplug.msg_counter -- set counter
