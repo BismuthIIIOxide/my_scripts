@@ -146,7 +146,9 @@ local function send(msg)
     msg[message_type].Id = buttplug.msg_counter -- set counter
     buttplug.msg_counter += 1                   -- increment counter
 
-    local payload = `[ {HttpService:JSONEncode(msg)} ]`
+    local payload = `[{HttpService:JSONEncode(msg)}]`
+    buttplug.print(`sent > {payload}`)
+    return buttplug.sock:Send(payload)
 end
 
 local function ConnectWebSocket(url)
@@ -258,5 +260,3 @@ function buttplug.connect(client_name, ws_addr)
     buttplug.sock = ConnectWebSocket(ws_addr)
     buttplug.request_server_info(buttplug.client_name)
 end
-
-return buttplug
