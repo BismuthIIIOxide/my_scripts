@@ -140,16 +140,6 @@ local function message_type(msg)
     return next(msg)
 end
 
-local function send(msg)
-    local message_type = message_type(msg)
-
-    msg[message_type].Id = buttplug.msg_counter -- set counter
-    buttplug.msg_counter += 1                   -- increment counter
-
-    local payload = `[{HttpService:JSONEncode(msg)}]`
-    buttplug.print(`SEND > {payload}`)
-    return buttplug.sock:Send(payload)
-end
 
 local function ConnectWebSocket(url)
     local success, socket = pcall(function()
@@ -162,24 +152,37 @@ local function ConnectWebSocket(url)
 
     return socket
 end
+
+function buttplug.send(msg)
+    local message_type = message_type(msg)
+
+    msg[message_type].Id = buttplug.msg_counter -- set counter
+    buttplug.msg_counter += 1                   -- increment counter
+
+    local payload = `[{HttpService:JSONEncode(msg)}]`
+    buttplug.print(`SEND > {payload}`)
+    return buttplug.sock:Send(payload)
+end
+
+
 function buttplug.request_server_info(client_name)
     local msg = messages.RequestServerInfo
 
     msg["RequestServerInfo"]["ClientName"] = client_name
 
-    return send(msg)
+    return buttplug.send(msg)
 end
 
 function buttplug.request_device_list()
-    return send(messages.RequestDeviceList)
+    return buttplug.send(messages.RequestDeviceList)
 end
 
 function buttplug.start_scanning()
-    return send(messages.StartScanning)
+    return buttplug.send(messages.StartScanning)
 end
 
 function buttplug.stop_scanning() 
-    return send(messages.StopScanning)
+    return buttplug.send(messages.StopScanning)
 end
 
 function buttplug.send_vibrate_cmd(dev_index, speeds)
@@ -191,7 +194,7 @@ function buttplug.send_vibrate_cmd(dev_index, speeds)
         msg["VibrateCmd"]["Speeds"][i] = {Index = i - 1, Speed = v}
     end
 
-    return send(msg)
+    return buttplug.send(msg)
 end
 
 function buttplug.send_stop_device_cmd(dev_index)
@@ -199,11 +202,11 @@ function buttplug.send_stop_device_cmd(dev_index)
 
     msg["StopDeviceCmd"]["DeviceIndex"] = dev_index
 
-    return send(msg)
+    return buttplug.send(msg)
 end
 
 function buttplug.send_stop_all_devices_cmd()
-    return send(messages.StopAllDevices)
+    return buttplug.send(messages.StopAllDevices)
 end
 
 function buttplug.count_devices()
