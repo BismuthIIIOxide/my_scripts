@@ -1,6 +1,3 @@
--- slightly modified version of this:
--- https://github.com/abbihors/buttplug-lua/blob/master/buttplug.lua
-
 
 local messages = {
     -- Status messages
@@ -152,7 +149,17 @@ local function send(msg)
     local payload = `[ {HttpService:JSONEncode(msg)} ]`
 end
 
+local function ConnectWebSocket(url)
+    local success, socket = pcall(function()
+        return WebSocket.connect(url)
+    end)
 
+    if not success then
+        error(`error connecting to websocket {url}`)
+    end
+
+    return socket
+end
 function buttplug.request_server_info(client_name)
     local msg = messages.RequestServerInfo
 
@@ -248,7 +255,7 @@ end
 
 function buttplug.connect(client_name, ws_addr) 
     buttplug.client_name = client_name
-    buttplug.sock = WebSocket.connect(ws_addr)
+    buttplug.sock = ConnectWebSocket(ws_addr)
     buttplug.request_server_info(buttplug.client_name)
 end
 
