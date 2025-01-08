@@ -262,6 +262,8 @@ end
 function buttplug.connect(client_name, ws_addr) 
     buttplug.client_name = client_name
     buttplug.sock = ConnectWebSocket(ws_addr)
+    repeat wait() until buttplug.sock
+    print(buttplug.sock)
     buttplug.request_server_info(buttplug.client_name)
 end
 
