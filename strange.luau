@@ -115,7 +115,6 @@ local messages = {
 local buttplug = {
     msg_counter = 1,
     devices = {},
-    sock = 0,
     print = print, -- User can override this w/ game print function
     -- Callbacks to run when receiving messages from the server
     cb = {
@@ -261,3 +260,5 @@ function buttplug.connect(client_name, ws_addr)
     buttplug.sock = ConnectWebSocket(ws_addr)
     buttplug.request_server_info(buttplug.client_name)
 end
+
+return buttplug
